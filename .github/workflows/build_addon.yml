@@ -80,7 +80,7 @@ jobs:
   push_to_gitcode:
     name: Push to GitCode
     runs-on: ubuntu-latest
-    if: ${{ startsWith(github.ref, 'refs/tags/') && vars.GITCODE_USERNAME }}
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
@@ -101,7 +101,7 @@ jobs:
       - build
       - push_to_gitcode
     env:
-      TAG_NAME: ${{ github.ref_name }}
+      TAG_NAME: 25.06
     steps:
       - name: Download Archive
         uses: actions/download-artifact@v6
