@@ -84,7 +84,7 @@ jobs:
 
   gitcode_push:
     name: Push to GitCode
-    if: ${{ startsWith(github.ref, 'refs/tags/') && vars.GITCODE_USERNAME }}
+    # if: ${{ startsWith(github.ref, 'refs/tags/') && vars.GITCODE_USERNAME }}
     uses: nvdacn/sync_to_gitcode/.github/workflows/PushToGitCode.yaml@master
     with:
       gitcode_username: ${{ vars.GITCODE_USERNAME }}
@@ -99,6 +99,7 @@ jobs:
     uses: nvdacn/sync_to_gitcode/.github/workflows/CreateReleaseOnGitCode.yaml@master
     with:
       artifact_name: '*'
+      tag_name: 26.05
       prerelease: ${{ contains(github.ref, '-') }}
     secrets:
       GITCODE_TOKEN: ${{ secrets.GITCODE_TOKEN }}
